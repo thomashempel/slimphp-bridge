@@ -101,7 +101,7 @@ class SlimInitiator implements MiddlewareInterface
             }
         }
         foreach ($routes['routes'] ?? [] as $details) {
-            if ($details['file']) {
+            if (array_key_exists('file', $details) && $details['file']) {
                 $route = $collector->get($details['route'], function(ServerRequestInterface $request, ResponseInterface $response) use ($details) {
                     $filename = GeneralUtility::getFileAbsFileName($details['file']);
                     if (isset($details['contentType'])) {
